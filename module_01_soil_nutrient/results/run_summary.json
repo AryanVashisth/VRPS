@@ -1,0 +1,34 @@
+{
+  "seed": 42,
+  "test_size": 0.2,
+  "published_rows": 1288,
+  "unique_rows": 880,
+  "exact_duplicate_rows_removed": 408,
+  "features": [
+    "N",
+    "P",
+    "K",
+    "ph",
+    "ec",
+    "oc",
+    "S",
+    "zn",
+    "fe",
+    "cu",
+    "Mn",
+    "B"
+  ],
+  "target": {
+    "0": "Less Fertile",
+    "1": "Fertile",
+    "2": "Highly Fertile"
+  },
+  "invalid_protocol_test_rows_copied_from_train": 90,
+  "clean_protocol_test_rows_copied_from_train": 0,
+  "best_model_by_macro_f1": "random_forest",
+  "best_macro_f1": 0.8641701558184494,
+  "packages": {
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1"
+  }
+}

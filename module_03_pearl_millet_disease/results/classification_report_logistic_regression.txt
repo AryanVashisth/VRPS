@@ -1,0 +1,9 @@
+                         precision    recall  f1-score   support
+
+  exserohilum_rostratum       1.00      0.50      0.67         2
+                healthy       0.89      1.00      0.94         8
+sclerospora_graminicola       1.00      1.00      1.00         6
+
+               accuracy                           0.94        16
+              macro avg       0.96      0.83      0.87        16
+           weighted avg       0.94      0.94      0.93        16

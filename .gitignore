@@ -1,0 +1,9 @@
+.venv/
+.mplconfig/
+__pycache__/
+*.pyc
+.DS_Store
+data_cache/
+module_03_pearl_millet_disease/data/raw/*.zip
+module_03_pearl_millet_disease/data/images/
+*.joblib

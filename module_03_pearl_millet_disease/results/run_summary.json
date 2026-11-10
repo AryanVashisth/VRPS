@@ -1,0 +1,28 @@
+{
+  "seed": 42,
+  "partial": true,
+  "missing_classes": [
+    "moesziomyces_bullatus",
+    "pyricularia"
+  ],
+  "test_size": 0.2,
+  "images": 80,
+  "train_images": 64,
+  "test_images": 16,
+  "class_counts": {
+    "exserohilum_rostratum": 9,
+    "healthy": 41,
+    "sclerospora_graminicola": 30
+  },
+  "features": "64x64 colour mean, standard deviation, and 8-bin histogram per channel",
+  "split_warning": "Random image split. Plant or leaf identity is not in the Zenodo folders.",
+  "augmentation": "none in this script",
+  "best_model_by_macro_f1": "decision_tree",
+  "best_macro_f1": 1.0,
+  "neural_net": "see train_cnn.py",
+  "packages": {
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.1"
+  }
+}

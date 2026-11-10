@@ -1,0 +1,49 @@
+{
+  "seed": 42,
+  "split": "StratifiedKFold n_splits=5 shuffle=True",
+  "rows_used": 99,
+  "cleaning": {
+    "rows_in_file": 198,
+    "label_before_fix": {
+      "Urea": 44,
+      "DAP": 36,
+      "28-28": 34,
+      "14-35-14": 28,
+      "20-20": 28,
+      "17-17-17": 14,
+      "10/26/2026": 14
+    },
+    "rows_after_dropping_exact_copies": 99,
+    "label_after_fix": {
+      "Urea": 22,
+      "DAP": 18,
+      "28-28": 17,
+      "14-35-14": 14,
+      "20-20": 14,
+      "17-17-17": 7,
+      "10-26-26": 7
+    }
+  },
+  "label_fix": {
+    "10/26/2026": "10-26-26"
+  },
+  "features_numeric": [
+    "Temperature",
+    "Humidity",
+    "Moisture",
+    "Nitrogen",
+    "Potassium",
+    "Phosphorous"
+  ],
+  "features_categorical": [
+    "Soil Type",
+    "Crop Type"
+  ],
+  "best_model_by_macro_f1": "random_forest",
+  "best_macro_f1_mean": 0.9673469387755101,
+  "packages": {
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1"
+  },
+  "not_used": "Kaggle playground synthetic fertilizer data was not merged into this file."
+}

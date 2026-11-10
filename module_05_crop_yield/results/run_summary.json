@@ -1,0 +1,63 @@
+{
+  "seed": 42,
+  "split": "Crop_Year <= 2016 train; later years test",
+  "train_rows": 16440,
+  "test_rows": 3249,
+  "test_rows_in_2020": 37,
+  "excluded_because_it_reconstructs_yield": [
+    "Production"
+  ],
+  "left_out_of_main_models": [
+    "Fertilizer",
+    "Pesticide"
+  ],
+  "main_features": [
+    "Crop_Year",
+    "Area",
+    "Annual_Rainfall",
+    "Crop",
+    "Season",
+    "State"
+  ],
+  "best_main_model_by_mae": "gradient_boosting",
+  "best_main_mae": 12.38883928709528,
+  "audit": {
+    "rows_loaded": 19689,
+    "rows_missing_yield_or_features": 0,
+    "rows_with_non_positive_area": 0,
+    "median_production_over_area_divided_by_yield": 1.0036581097163086,
+    "rows_used": 19689,
+    "year_counts": {
+      "1997": 410,
+      "1998": 646,
+      "1999": 650,
+      "2000": 772,
+      "2001": 750,
+      "2002": 815,
+      "2003": 801,
+      "2004": 787,
+      "2005": 811,
+      "2006": 823,
+      "2007": 828,
+      "2008": 847,
+      "2009": 865,
+      "2010": 859,
+      "2011": 907,
+      "2012": 894,
+      "2013": 976,
+      "2014": 965,
+      "2015": 998,
+      "2016": 1036,
+      "2017": 1070,
+      "2018": 1063,
+      "2019": 1079,
+      "2020": 37
+    }
+  },
+  "packages": {
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.1"
+  },
+  "selection_note": "Lowest all-crop MAE is gradient boosting. That lead comes from Coconut, whose recorded yield is orders of magnitude above the grain crops. Random forest is the model carried forward: on non-coconut test rows, and on Bajra, it has the lower error."
+}

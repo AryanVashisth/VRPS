@@ -1,0 +1,52 @@
+{
+  "seed": 42,
+  "series": "port1_water_content from z6-03235_port1-2_water_content.csv",
+  "depth_note": "Zenodo text: odd ports at 30 cm, even ports at 60 cm.",
+  "headline_horizon": "4 hours (16 steps of 15 minutes)",
+  "split": "first 80% of the calendar span for training, last 20% for test",
+  "cutoff": "2022-10-30 08:27:00",
+  "train_rows_4h": 44280,
+  "test_rows_4h": 1534,
+  "features": [
+    "lag_0",
+    "lag_1",
+    "lag_4",
+    "lag_16",
+    "lag_96",
+    "mean_last_4h",
+    "mean_last_24h",
+    "hour_sin",
+    "hour_cos",
+    "doy_sin",
+    "doy_cos"
+  ],
+  "arima": "not fit; see module README",
+  "rainfall_and_irrigation_files": "present in the Zenodo zip, not used as inputs in this baseline",
+  "audit": {
+    "port1": {
+      "start": "2021-06-30 19:15:00",
+      "end": "2023-02-28 23:45:00",
+      "grid_points": 58387,
+      "missing_grid_points": 9866,
+      "missing_stretches": 197,
+      "longest_missing_minutes": 5745,
+      "observed_min": 0.142,
+      "observed_max": 0.339
+    },
+    "port2": {
+      "start": "2021-06-30 19:15:00",
+      "end": "2023-02-28 23:45:00",
+      "grid_points": 58387,
+      "missing_grid_points": 9866,
+      "missing_stretches": 394,
+      "longest_missing_minutes": 5745,
+      "observed_min": 0.119,
+      "observed_max": 0.286
+    }
+  },
+  "packages": {
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.1"
+  }
+}

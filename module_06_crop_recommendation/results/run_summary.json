@@ -1,0 +1,58 @@
+{
+  "seed": 42,
+  "test_size": 0.2,
+  "rows": 2200,
+  "train_rows": 1760,
+  "test_rows": 440,
+  "n_classes": 22,
+  "classes": [
+    "apple",
+    "banana",
+    "blackgram",
+    "chickpea",
+    "coconut",
+    "coffee",
+    "cotton",
+    "grapes",
+    "jute",
+    "kidneybeans",
+    "lentil",
+    "maize",
+    "mango",
+    "mothbeans",
+    "mungbean",
+    "muskmelon",
+    "orange",
+    "papaya",
+    "pigeonpeas",
+    "pomegranate",
+    "rice",
+    "watermelon"
+  ],
+  "duplicate_rows": 0,
+  "millet_classes_present": false,
+  "best_model_by_macro_f1": "random_forest",
+  "best_macro_f1": 0.9931775541531639,
+  "ph_probe_crops": [
+    "rice",
+    "maize",
+    "cotton",
+    "chickpea"
+  ],
+  "ph_grid": [
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5,
+    7.0,
+    7.5,
+    8.0,
+    8.5
+  ],
+  "packages": {
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.1"
+  }
+}
