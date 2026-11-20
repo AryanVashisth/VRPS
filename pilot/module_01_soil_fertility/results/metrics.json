@@ -1,0 +1,17 @@
+{
+  "holdout": {
+    "accuracy": 0.9831,
+    "macro_precision": 0.9757,
+    "macro_recall": 0.9827,
+    "macro_f1": 0.9791,
+    "cv5_macro_f1_mean": 0.9563,
+    "cv5_macro_f1_std": 0.0072,
+    "onnx_sklearn_agreement": 1.0
+  },
+  "classification_report": "                precision    recall  f1-score   support\n\n  Less Fertile      0.995     0.976     0.985       626\n       Fertile      0.971     0.992     0.982       509\nHighly Fertile      0.961     0.980     0.970        50\n\n      accuracy                          0.983      1185\n     macro avg      0.976     0.983     0.979      1185\n  weighted avg      0.983     0.983     0.983      1185\n",
+  "class_support_test": {
+    "Less Fertile": 626,
+    "Fertile": 509,
+    "Highly Fertile": 50
+  }
+}

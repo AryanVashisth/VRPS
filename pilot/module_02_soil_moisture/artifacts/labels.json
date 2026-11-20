@@ -1,0 +1,5 @@
+{
+  "task": "regression",
+  "output": "float water_content_4h",
+  "unit": "volumetric_water_content_fraction"
+}

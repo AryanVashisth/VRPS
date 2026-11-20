@@ -1,0 +1,9 @@
+                precision    recall  f1-score   support
+
+  Less Fertile      0.995     0.976     0.985       626
+       Fertile      0.971     0.992     0.982       509
+Highly Fertile      0.961     0.980     0.970        50
+
+      accuracy                          0.983      1185
+     macro avg      0.976     0.983     0.979      1185
+  weighted avg      0.983     0.983     0.983      1185

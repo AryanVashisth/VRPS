@@ -1,0 +1,7 @@
+{
+  "soil_fertility_v1.onnx": "212a996d68e86f2ba8ee91fab276bf18ae6e5581a499acac5efeed9bc69f13bd",
+  "schema.json": "2604eb5e68195e65915e2b25f122fbf7c3a6fe487932ec623856aed68caf5447",
+  "labels.json": "af9da8a716db77577d4828d95a3e2e1ad0edcce6e2e8fb30def76d73bf4bfd34",
+  "dataset": "data/processed/soil_fertility_india_v1.csv",
+  "dataset_rows": 5921
+}

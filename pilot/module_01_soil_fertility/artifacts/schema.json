@@ -1,0 +1,145 @@
+{
+  "module": "module_01_soil_fertility",
+  "version": "1.0.0",
+  "task": "multiclass_classification",
+  "framework": "onnxruntime",
+  "android": {
+    "runtime": "onnxruntime-android",
+    "note": "Runs on-device. No network bridge or tunnel required for inference.",
+    "input_tensor": "float32[1,12]",
+    "model_file": "soil_fertility_v1.onnx"
+  },
+  "features": [
+    {
+      "name": "N",
+      "index": 0,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "P",
+      "index": 1,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "K",
+      "index": 2,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "ph",
+      "index": 3,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "ec",
+      "index": 4,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "oc",
+      "index": 5,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "S",
+      "index": 6,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "zn",
+      "index": 7,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "fe",
+      "index": 8,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "cu",
+      "index": 9,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "Mn",
+      "index": 10,
+      "dtype": "float32",
+      "unit_hint": null
+    },
+    {
+      "name": "B",
+      "index": 11,
+      "dtype": "float32",
+      "unit_hint": null
+    }
+  ],
+  "feature_order": [
+    "N",
+    "P",
+    "K",
+    "ph",
+    "ec",
+    "oc",
+    "S",
+    "zn",
+    "fe",
+    "cu",
+    "Mn",
+    "B"
+  ],
+  "labels": [
+    {
+      "id": 0,
+      "name": "Less Fertile"
+    },
+    {
+      "id": 1,
+      "name": "Fertile"
+    },
+    {
+      "id": 2,
+      "name": "Highly Fertile"
+    }
+  ],
+  "preprocessing": {
+    "missing": "median imputer fitted on train",
+    "scale": "standard scaler fitted on train",
+    "bundled_in_onnx": true
+  },
+  "train": {
+    "seed": 42,
+    "algorithm": "RandomForestClassifier",
+    "n_estimators": 200,
+    "max_depth": 12,
+    "min_samples_leaf": 3,
+    "class_weight": "balanced",
+    "n_rows_total": 5921,
+    "n_train": 4736,
+    "n_test": 1185,
+    "sources": [
+      "india_crop_recommendation_npk_rule",
+      "india_shc_ahmedpur_latur_mh",
+      "public_soil_fertility_labeled"
+    ]
+  },
+  "metrics_holdout": {
+    "accuracy": 0.9831,
+    "macro_precision": 0.9757,
+    "macro_recall": 0.9827,
+    "macro_f1": 0.9791,
+    "cv5_macro_f1_mean": 0.9563,
+    "cv5_macro_f1_std": 0.0072,
+    "onnx_sklearn_agreement": 1.0
+  },
+  "created_utc": "2026-11-14T14:03:29Z"
+}

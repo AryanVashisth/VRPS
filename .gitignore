@@ -7,3 +7,9 @@ data_cache/
 module_03_pearl_millet_disease/data/raw/*.zip
 module_03_pearl_millet_disease/data/images/
 *.joblib
+
+# pilot local
+pilot/**/.venv/
+pilot/**/__pycache__/
+
+pilot/**/.history/

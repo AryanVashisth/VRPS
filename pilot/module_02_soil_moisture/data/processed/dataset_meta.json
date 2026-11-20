@@ -1,0 +1,19 @@
+{
+  "horizon_steps": 16,
+  "horizon": "4_hour",
+  "port": "port1_water_content",
+  "n_train": 37004,
+  "n_test": 9251,
+  "cutoff": "2022-08-12 05:00:00",
+  "feature_order": [
+    "lag_0",
+    "lag_1",
+    "lag_4",
+    "lag_16",
+    "lag_96",
+    "mean_last_4h",
+    "std_last_4h",
+    "delta_1",
+    "delta_4"
+  ]
+}

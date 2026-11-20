@@ -1,0 +1,60 @@
+{
+  "module": "module_02_soil_moisture",
+  "version": "1.0.0",
+  "task": "regression",
+  "target": "port1_water_content_in_4_hours",
+  "framework": "onnxruntime",
+  "android": {
+    "runtime": "onnxruntime-android",
+    "note": "Runs on-device. No network bridge or tunnel required for inference.",
+    "input_tensor": "float32[1,9]",
+    "model_file": "soil_moisture_4h_v1.onnx"
+  },
+  "feature_order": [
+    "lag_0",
+    "lag_1",
+    "lag_4",
+    "lag_16",
+    "lag_96",
+    "mean_last_4h",
+    "std_last_4h",
+    "delta_1",
+    "delta_4"
+  ],
+  "preprocessing": {
+    "bundled_in_onnx": true
+  },
+  "baseline": {
+    "persistence": "predict lag_0",
+    "persistence_mae": 0.002136850070262674
+  },
+  "ship_model": "ridge",
+  "ship_model_beats_persistence": false,
+  "recommended_policy": "prefer_persistence_for_4h",
+  "metrics_holdout": {
+    "persistence": {
+      "mae": 0.002136850070262674,
+      "rmse": 0.00860204881161643,
+      "r2": 0.9459534544646622
+    },
+    "ridge": {
+      "mae": 0.0024900884048782174,
+      "rmse": 0.008586133555705474,
+      "r2": 0.9461532600915733
+    },
+    "random_forest": {
+      "mae": 0.002896760036057865,
+      "rmse": 0.009061308750479039,
+      "r2": 0.9400283507113015
+    }
+  },
+  "onnx_sklearn_agreement_frac": 1.0,
+  "train": {
+    "seed": 42,
+    "n_train": 37004,
+    "n_test": 9251,
+    "cutoff": "2022-08-12 05:00:00",
+    "source": "Zenodo 10.5281/zenodo.20665025 port1"
+  },
+  "created_utc": "2026-11-20T13:14:39Z"
+}
