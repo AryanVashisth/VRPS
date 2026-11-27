@@ -1,8 +1,8 @@
 """Rebuild Module 6 pilot: features, RandomForest pipeline, ONNX, metrics.
 
-Reads images from the development module (absolute path below, override with
-DEV_IMAGES env var). If that folder is missing, falls back to the copied
-feature CSV in data/processed.
+Reads images from the sibling development disease folder when present
+(override with DEV_IMAGES). If that folder is missing, falls back to the
+copied feature CSV in data/processed — so clone + infer works on any machine.
 """
 from __future__ import annotations
 
@@ -38,11 +38,10 @@ from sklearn.preprocessing import StandardScaler
 from .features import colour_features, feature_names
 
 ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = ROOT.parents[1]  # .../development (git root)
 PROC, ART, RES, DEMO = (ROOT / "data/processed", ROOT / "artifacts", ROOT / "results", ROOT / "data/demo_images")
-DEV_IMAGES = Path(os.environ.get(
-    "DEV_IMAGES",
-    "/Users/aryan/Desktop/VRPS- Research Associate/development/module_03_pearl_millet_disease/data/images",
-))
+_DEFAULT_IMAGES = REPO_ROOT / "module_03_pearl_millet_disease" / "data" / "images"
+DEV_IMAGES = Path(os.environ["DEV_IMAGES"]) if os.environ.get("DEV_IMAGES") else _DEFAULT_IMAGES
 CSV_PATH = PROC / "pearl_millet_colour_features_v1.csv"
 MODULE_ID = "module_06_pearl_millet_disease"
 VERSION = "1.0.0"
