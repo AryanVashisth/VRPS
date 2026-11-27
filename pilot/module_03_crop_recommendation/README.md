@@ -1,17 +1,54 @@
-# Pilot Module 3: Crop recommendation (Android-ready)
+# Pilot Module 3: Crop recommendation (ONNX, VRPS-aligned)
 
-Recommends a crop label from N, P, K, temperature, humidity, pH, rainfall.
 
-**Honesty:** public augmented table, 22 crops, **no millet class**. High Macro F1 describes this table, not a millet field.
+Recommends a crop from soil and weather features. Training stays in scikit-learn; the shipped artifact is **ONNX** (same pattern as VRPS `module_01_soil_fertility`).
 
-## Quick start
-```bash
-pip install -r requirements.txt
+## Layout
+
+```
+data/raw/          # source CSV
+data/processed/    # cleaned training table
+src/train.py       # rebuild model + metrics
+src/infer.py       # ONNX inference API
+artifacts/         # ONNX + schema + labels + manifest
+results/           # metrics, plots, report
+docs/              # design notes
+```
+
+## Install
+
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+```
+
+## Train
+
+```powershell
+python -m src.train
+```
+
+Writes `artifacts/crop_recommendation_v1.onnx`, `results/metrics.json`, confusion matrix, and feature importance. Also refreshes `models/crop_rf.onnx` for compatibility.
+
+## Predict
+
+```powershell
+python predict.py --n 90 --p 42 --k 43 --ph 6.5 --temperature 20.9 --humidity 82 --rainfall 203
+```
+
+Or the JSON API demo:
+
+```powershell
 python -m src.infer
 ```
 
-## Ship
-`artifacts/crop_recommendation_v1.onnx` + `schema.json` + `labels.json` (onnxruntime-android).
+## Android / on-device
 
-## Sensor note
-N/P/K/pH can come from soil tests/sensors. Temperature/humidity from environment sensors. Rainfall needs a rain gauge or weather source, not a soil probe alone.
+Copy from `artifacts/`:
+
+- `crop_recommendation_v1.onnx`
+- `schema.json`
+- `labels.json`
+
+Input: `float32[1,7]` in `schema.json` feature order. Output: class id + probability vector.

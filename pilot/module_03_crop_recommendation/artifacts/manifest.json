@@ -1,5 +1,8 @@
 {
-  "crop_recommendation_v1.onnx": "e3e9a9c312701cb2f7758d7525215c990aaf11bb79c0a1478390622e0046c37e",
-  "schema.json": "47fb45d5b08df8a89ecbc081b78c540ebeb0f83767e4561eee93343dd76b46d7",
-  "labels.json": "76352487c1431f9a05a565f972c845ee76e77f5d2c82d3630aae1f59b3766566"
+  "crop_recommendation_v1.onnx": "9769a232aebcc2a9ef873c5f59c934a641b168433e9d6613429e339a4b44775a",
+  "schema.json": "91778f373ff9c3846f4b6837a78a4a473675b6035f086a03adc09db67a6418b1",
+  "labels.json": "2b0cd603dd1adedccf2ff5f056b248872e60c49f7aceed19f26f8aeb4dc262d6",
+  "dataset": "data/processed/crop_recommendation_v1.csv",
+  "dataset_rows": 2200,
+  "version": "1.1.0"
 }

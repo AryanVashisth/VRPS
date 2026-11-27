@@ -1,40 +1,154 @@
 {
   "module": "module_03_crop_recommendation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "task": "multiclass_classification",
   "framework": "onnxruntime",
   "android": {
     "runtime": "onnxruntime-android",
+    "note": "Runs on-device. No network bridge required for inference.",
     "input_tensor": "float32[1,7]",
-    "model_file": "crop_recommendation_v1.onnx",
-    "note": "On-device inference. No bridge required."
+    "model_file": "crop_recommendation_v1.onnx"
   },
   "feature_order": [
     "N",
     "P",
     "K",
-    "temperature",
-    "humidity",
-    "ph",
-    "rainfall"
+    "pH",
+    "Temperature",
+    "Humidity",
+    "Rainfall"
   ],
-  "n_classes": 22,
-  "honesty": "Public augmented table; no millet class. High score describes this table, not a millet field.",
-  "sensor_map": {
-    "N": "soil N lab/sensor if calibrated",
-    "P": "soil P",
-    "K": "soil K",
-    "ph": "pH probe",
-    "temperature": "air/soil temp sensor",
-    "humidity": "humidity sensor",
-    "rainfall": "rain gauge or weather API (not a soil probe)"
+  "labels": [
+    {
+      "id": 0,
+      "name": "apple"
+    },
+    {
+      "id": 1,
+      "name": "banana"
+    },
+    {
+      "id": 2,
+      "name": "blackgram"
+    },
+    {
+      "id": 3,
+      "name": "chickpea"
+    },
+    {
+      "id": 4,
+      "name": "coconut"
+    },
+    {
+      "id": 5,
+      "name": "coffee"
+    },
+    {
+      "id": 6,
+      "name": "cotton"
+    },
+    {
+      "id": 7,
+      "name": "grapes"
+    },
+    {
+      "id": 8,
+      "name": "jute"
+    },
+    {
+      "id": 9,
+      "name": "kidneybeans"
+    },
+    {
+      "id": 10,
+      "name": "lentil"
+    },
+    {
+      "id": 11,
+      "name": "maize"
+    },
+    {
+      "id": 12,
+      "name": "mango"
+    },
+    {
+      "id": 13,
+      "name": "mothbeans"
+    },
+    {
+      "id": 14,
+      "name": "mungbean"
+    },
+    {
+      "id": 15,
+      "name": "muskmelon"
+    },
+    {
+      "id": 16,
+      "name": "orange"
+    },
+    {
+      "id": 17,
+      "name": "papaya"
+    },
+    {
+      "id": 18,
+      "name": "pigeonpeas"
+    },
+    {
+      "id": 19,
+      "name": "pomegranate"
+    },
+    {
+      "id": 20,
+      "name": "rice"
+    },
+    {
+      "id": 21,
+      "name": "watermelon"
+    }
+  ],
+  "preprocessing": {
+    "missing": "median imputer fitted on train",
+    "scale": "none (tree model)",
+    "bundled_in_onnx": true
+  },
+  "train": {
+    "seed": 42,
+    "algorithm": "RandomForestClassifier",
+    "best_params": {
+      "variant": "baseline_rf300",
+      "n_estimators": 300,
+      "max_features": "sqrt",
+      "min_samples_leaf": 1,
+      "has_scaler": false
+    },
+    "class_weight": "balanced_subsample",
+    "n_rows_total": 2200,
+    "n_train": 1760,
+    "n_test": 440,
+    "n_classes": 22,
+    "sources": [
+      "india_crop_recommendation_npk"
+    ]
   },
   "metrics_holdout": {
-    "accuracy": 0.9932,
-    "macro_f1": 0.9932,
-    "cv5_macro_f1_mean": 0.995,
-    "cv5_macro_f1_std": 0.0022,
+    "accuracy": 0.9955,
+    "macro_precision": 0.9957,
+    "macro_recall": 0.9955,
+    "macro_f1": 0.9955,
+    "cv5_macro_f1_mean": 0.9954,
+    "cv5_macro_f1_std": 0.0025,
+    "selected_variant": "baseline_rf300",
     "onnx_sklearn_agreement": 1.0
   },
-  "created_utc": "2026-11-27T02:32:54Z"
+  "metrics_baseline_holdout": {
+    "accuracy": 0.9955,
+    "macro_precision": 0.9957,
+    "macro_recall": 0.9955,
+    "macro_f1": 0.9955,
+    "cv5_macro_f1_mean": 0.9954,
+    "cv5_macro_f1_std": 0.0025
+  },
+  "created_utc": "2026-11-24T12:56:25Z"
 }

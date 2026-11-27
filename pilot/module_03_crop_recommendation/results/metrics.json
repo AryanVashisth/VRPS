@@ -1,7 +1,27 @@
 {
-  "accuracy": 0.9932,
-  "macro_f1": 0.9932,
-  "cv5_macro_f1_mean": 0.995,
-  "cv5_macro_f1_std": 0.0022,
-  "onnx_sklearn_agreement": 1.0
+  "version": "1.1.0",
+  "holdout_enhanced": {
+    "accuracy": 0.9955,
+    "macro_precision": 0.9957,
+    "macro_recall": 0.9955,
+    "macro_f1": 0.9955,
+    "cv5_macro_f1_mean": 0.9954,
+    "cv5_macro_f1_std": 0.0025,
+    "selected_variant": "baseline_rf300",
+    "onnx_sklearn_agreement": 1.0
+  },
+  "holdout_baseline": {
+    "accuracy": 0.9955,
+    "macro_precision": 0.9957,
+    "macro_recall": 0.9955,
+    "macro_f1": 0.9955,
+    "cv5_macro_f1_mean": 0.9954,
+    "cv5_macro_f1_std": 0.0025
+  },
+  "delta": {
+    "accuracy": 0.0,
+    "macro_f1": 0.0,
+    "cv5_macro_f1_mean": 0.0
+  },
+  "classification_report": "              precision    recall  f1-score   support\n\n       apple      1.000     1.000     1.000        20\n      banana      1.000     1.000     1.000        20\n   blackgram      1.000     0.950     0.974        20\n    chickpea      1.000     1.000     1.000        20\n     coconut      1.000     1.000     1.000        20\n      coffee      1.000     1.000     1.000        20\n      cotton      1.000     1.000     1.000        20\n      grapes      1.000     1.000     1.000        20\n        jute      0.952     1.000     0.976        20\n kidneybeans      1.000     1.000     1.000        20\n      lentil      1.000     1.000     1.000        20\n       maize      0.952     1.000     0.976        20\n       mango      1.000     1.000     1.000        20\n   mothbeans      1.000     1.000     1.000        20\n    mungbean      1.000     1.000     1.000        20\n   muskmelon      1.000     1.000     1.000        20\n      orange      1.000     1.000     1.000        20\n      papaya      1.000     1.000     1.000        20\n  pigeonpeas      1.000     1.000     1.000        20\n pomegranate      1.000     1.000     1.000        20\n        rice      1.000     0.950     0.974        20\n  watermelon      1.000     1.000     1.000        20\n\n    accuracy                          0.995       440\n   macro avg      0.996     0.995     0.995       440\nweighted avg      0.996     0.995     0.995       440\n"
 }
