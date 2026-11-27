@@ -1,0 +1,40 @@
+{
+  "module": "module_03_crop_recommendation",
+  "version": "1.0.0",
+  "task": "multiclass_classification",
+  "framework": "onnxruntime",
+  "android": {
+    "runtime": "onnxruntime-android",
+    "input_tensor": "float32[1,7]",
+    "model_file": "crop_recommendation_v1.onnx",
+    "note": "On-device inference. No bridge required."
+  },
+  "feature_order": [
+    "N",
+    "P",
+    "K",
+    "temperature",
+    "humidity",
+    "ph",
+    "rainfall"
+  ],
+  "n_classes": 22,
+  "honesty": "Public augmented table; no millet class. High score describes this table, not a millet field.",
+  "sensor_map": {
+    "N": "soil N lab/sensor if calibrated",
+    "P": "soil P",
+    "K": "soil K",
+    "ph": "pH probe",
+    "temperature": "air/soil temp sensor",
+    "humidity": "humidity sensor",
+    "rainfall": "rain gauge or weather API (not a soil probe)"
+  },
+  "metrics_holdout": {
+    "accuracy": 0.9932,
+    "macro_f1": 0.9932,
+    "cv5_macro_f1_mean": 0.995,
+    "cv5_macro_f1_std": 0.0022,
+    "onnx_sklearn_agreement": 1.0
+  },
+  "created_utc": "2026-11-27T02:32:54Z"
+}

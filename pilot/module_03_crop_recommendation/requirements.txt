@@ -1,0 +1,7 @@
+numpy>=1.26
+pandas>=2.1
+scikit-learn==1.9.1
+skl2onnx>=1.17
+onnx>=1.16
+onnxruntime>=1.18
+matplotlib>=3.8
