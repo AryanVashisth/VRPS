@@ -13,3 +13,5 @@ pilot/**/.venv/
 pilot/**/__pycache__/
 
 pilot/**/.history/
+~$*
+.DS_Store
