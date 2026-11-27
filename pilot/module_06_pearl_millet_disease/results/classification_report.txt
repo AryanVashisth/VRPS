@@ -1,0 +1,9 @@
+                       precision    recall  f1-score   support
+
+Exserohilum leaf spot      1.000     1.000     1.000         2
+              Healthy      1.000     1.000     1.000         8
+         Downy mildew      1.000     1.000     1.000         6
+
+             accuracy                          1.000        16
+            macro avg      1.000     1.000     1.000        16
+         weighted avg      1.000     1.000     1.000        16

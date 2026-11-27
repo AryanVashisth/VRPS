@@ -1,0 +1,31 @@
+{
+  "cleaning": {
+    "rows_in_file": 198,
+    "rows_after_dedupe": 99
+  },
+  "cv5": {
+    "accuracy_mean": 0.98,
+    "accuracy_std": 0.0245,
+    "macro_f1_mean": 0.9537,
+    "macro_f1_std": 0.0642,
+    "oof": {
+      "accuracy": 0.9798,
+      "macro_precision": 0.981,
+      "macro_recall": 0.9592,
+      "macro_f1": 0.9682
+    }
+  },
+  "holdout": {
+    "n_train": 79,
+    "n_test": 20,
+    "accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "macro_f1": 1.0
+  },
+  "onnx_check_all_rows": {
+    "label_agreement": 1.0,
+    "max_abs_proba_diff": 1.8825654080067977e-07
+  },
+  "classification_report_oof": "              precision    recall  f1-score   support\n\n    10-26-26      1.000     0.857     0.923         7\n    14-35-14      0.933     1.000     0.966        14\n    17-17-17      1.000     0.857     0.923         7\n       20-20      0.933     1.000     0.966        14\n       28-28      1.000     1.000     1.000        17\n         DAP      1.000     1.000     1.000        18\n        Urea      1.000     1.000     1.000        22\n\n    accuracy                          0.980        99\n   macro avg      0.981     0.959     0.968        99\nweighted avg      0.981     0.980     0.979        99\n"
+}

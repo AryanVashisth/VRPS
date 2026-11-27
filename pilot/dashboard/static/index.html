@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-type="software">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="page-type" content="software" />
+  <meta name="site-kind" content="software" />
+  <title>VRPS Pilot Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="rail">
+      <div class="brand">
+        <strong>VRPS</strong>
+        <span>Pilot inference console</span>
+      </div>
+      <ul class="module-list" id="moduleList" aria-label="Pilot modules"></ul>
+      <div class="rail-foot">
+        Local ONNX only. No cloud call for prediction.<br />
+        Start: <code>uvicorn app:app --port 8765</code>
+      </div>
+    </aside>
+
+    <main class="workbench" id="workbench">
+      <div class="topbar">
+        <div>
+          <h1 id="title">Pilot stack</h1>
+          <p id="subtitle">Run each shipped module with the same schema the Android path will use.</p>
+        </div>
+        <div class="status-chip" id="healthChip">checking…</div>
+      </div>
+
+      <section class="overview active" id="overview">
+        <div class="panel">
+          <header>
+            <h2>All modules</h2>
+          </header>
+          <div class="body">
+            <table class="stack-table" id="stackTable">
+              <thead>
+                <tr>
+                  <th>Module</th>
+                  <th>Map</th>
+                  <th>Task</th>
+                  <th>Version</th>
+                  <th>State</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid" id="workGrid" hidden>
+        <div class="panel">
+          <header>
+            <h2>Inputs</h2>
+            <span class="pill" id="taskPill">—</span>
+          </header>
+          <div class="body">
+            <form id="inferForm">
+              <div class="form-grid" id="formGrid"></div>
+              <div class="file-row" id="imageRow" hidden>
+                <label for="leafImage">Leaf image (disease module)</label>
+                <input id="leafImage" type="file" accept="image/*" />
+              </div>
+              <div class="actions">
+                <button type="submit" class="btn primary" id="runBtn">Run inference</button>
+                <button type="button" class="btn" id="sampleBtn">Load sample</button>
+              </div>
+            </form>
+            <div id="formError" class="error" hidden style="margin-top:0.85rem"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <header>
+            <h2>Result</h2>
+            <span class="status-chip" id="latencyChip"></span>
+          </header>
+          <div class="body">
+            <div id="resultEmpty" class="result-empty">Set inputs and run. Output mirrors the pilot `infer.py` contract.</div>
+            <div id="resultView" class="result-block" hidden></div>
+          </div>
+        </div>
+
+        <div class="panel" style="grid-column: 1 / -1">
+          <header>
+            <h2>Holdout notes</h2>
+          </header>
+          <div class="body">
+            <div class="metrics" id="metricsRow"></div>
+            <pre class="note" id="schemaNote" style="margin-top:0.85rem"></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

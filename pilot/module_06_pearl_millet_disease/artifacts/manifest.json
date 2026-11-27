@@ -1,0 +1,9 @@
+{
+  "module": "module_06_pearl_millet_disease",
+  "version": "1.0.0",
+  "disease_v1.onnx": "d57a29f8cb238d75116126f383b4c25db758122cef247c20972168e05113a5c7",
+  "schema.json": "29aeb0ad1b88048354690798247e7873f93cb33d0134c569252a9ffea8653740",
+  "labels.json": "42d732a8a4c57a1974165d68e9edca0b8e8acbbc2ace4c6bf4d562f652117faa",
+  "dataset": "data/processed/pearl_millet_colour_features_v1.csv",
+  "dataset_rows": 80
+}

@@ -1,0 +1,8 @@
+{
+  "model.onnx": "8e7e375bed9bc8cbe954d5617e4bca38a1655c626efd99ca2296ccff615ab36a",
+  "schema.json": "9729d5b75ccffbe034b1a93b351ac2241c336e51b7f4e0a489be41680954b621",
+  "dataset": "data/raw/crop_yield.csv",
+  "dataset_rows_used": 19689,
+  "model_bytes": 9593986,
+  "sklearn": "1.9.1"
+}

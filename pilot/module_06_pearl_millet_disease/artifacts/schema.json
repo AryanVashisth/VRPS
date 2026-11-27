@@ -1,0 +1,100 @@
+{
+  "module": "module_06_pearl_millet_disease",
+  "version": "1.0.0",
+  "task": "multiclass_classification",
+  "framework": "onnxruntime",
+  "android": {
+    "runtime": "onnxruntime-android",
+    "note": "ONNX takes 30 colour features, not pixels. The app must compute the same features first.",
+    "input_tensor": "float32[1,30]",
+    "model_file": "disease_v1.onnx"
+  },
+  "feature_order": [
+    "mean_r",
+    "mean_g",
+    "mean_b",
+    "std_r",
+    "std_g",
+    "std_b",
+    "hist_r_0",
+    "hist_r_1",
+    "hist_r_2",
+    "hist_r_3",
+    "hist_r_4",
+    "hist_r_5",
+    "hist_r_6",
+    "hist_r_7",
+    "hist_g_0",
+    "hist_g_1",
+    "hist_g_2",
+    "hist_g_3",
+    "hist_g_4",
+    "hist_g_5",
+    "hist_g_6",
+    "hist_g_7",
+    "hist_b_0",
+    "hist_b_1",
+    "hist_b_2",
+    "hist_b_3",
+    "hist_b_4",
+    "hist_b_5",
+    "hist_b_6",
+    "hist_b_7"
+  ],
+  "labels": [
+    {
+      "id": 0,
+      "name": "Exserohilum leaf spot",
+      "class_dir": "exserohilum_rostratum"
+    },
+    {
+      "id": 1,
+      "name": "Healthy",
+      "class_dir": "healthy"
+    },
+    {
+      "id": 2,
+      "name": "Downy mildew",
+      "class_dir": "sclerospora_graminicola"
+    }
+  ],
+  "preprocessing": {
+    "image": "resize 64x64 RGB, /255, per-channel mean, std, 8-bin histogram (normalised)",
+    "model_bundled_in_onnx": [
+      "median imputer",
+      "standard scaler",
+      "random forest"
+    ],
+    "image_features_bundled_in_onnx": false
+  },
+  "train": {
+    "seed": 42,
+    "algorithm": "RandomForestClassifier",
+    "n_estimators": 200,
+    "min_samples_leaf": 3,
+    "class_weight": "balanced",
+    "n_rows_total": 80,
+    "n_train": 64,
+    "n_test": 16,
+    "class_counts": {
+      "Exserohilum leaf spot": 9,
+      "Healthy": 41,
+      "Downy mildew": 30
+    },
+    "split": "random stratified image split (no plant IDs; optimistic)",
+    "missing_classes": [
+      "pearl millet smut",
+      "pyricularia (blast)"
+    ]
+  },
+  "metrics_holdout": {
+    "accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "macro_f1": 1.0,
+    "cv5_macro_f1_mean": 0.8837,
+    "cv5_macro_f1_std": 0.0707,
+    "onnx_sklearn_agreement": 1.0
+  },
+  "created_utc": "2026-11-27T03:08:21Z"
+}

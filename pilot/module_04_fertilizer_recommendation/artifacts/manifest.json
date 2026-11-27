@@ -1,0 +1,8 @@
+{
+  "model.onnx": "0199aaf489469446a2f04b4b1293a2f591d69fb6257f43d159e79bfe113a56da",
+  "schema.json": "050f5be3e8c77d05417eb6021ce05550d5dff42f7525c9657ede117fd4994d39",
+  "labels.json": "0ceac23efb661934a8efd793d85d8e054c0d3f193094bf0c4b3febebb217d2aa",
+  "dataset": "data/raw/fertilizer_prediction.csv",
+  "dataset_rows_after_dedupe": 99,
+  "sklearn": "1.9.1"
+}

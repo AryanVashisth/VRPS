@@ -1,0 +1,12 @@
+{
+  "holdout": {
+    "accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "macro_f1": 1.0,
+    "cv5_macro_f1_mean": 0.8837,
+    "cv5_macro_f1_std": 0.0707,
+    "onnx_sklearn_agreement": 1.0
+  },
+  "classification_report": "                       precision    recall  f1-score   support\n\nExserohilum leaf spot      1.000     1.000     1.000         2\n              Healthy      1.000     1.000     1.000         8\n         Downy mildew      1.000     1.000     1.000         6\n\n             accuracy                          1.000        16\n            macro avg      1.000     1.000     1.000        16\n         weighted avg      1.000     1.000     1.000        16\n"
+}

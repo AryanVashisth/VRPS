@@ -1,0 +1,80 @@
+{
+  "cleaning": {
+    "rows_in_file": 19689,
+    "rows_used": 19689
+  },
+  "split": {
+    "train_rows": 16440,
+    "test_rows": 3249,
+    "test_rows_by_year": {
+      "2017": 1070,
+      "2018": 1063,
+      "2019": 1079,
+      "2020": 37
+    },
+    "test_rows_with_unseen_category": 0
+  },
+  "test": {
+    "all_test_rows": {
+      "random_forest": {
+        "n": 3249,
+        "mae": 11.7404,
+        "rmse": 165.0827,
+        "median_ae": 0.2928,
+        "r2": 0.9618
+      },
+      "crop_mean_baseline": {
+        "n": 3249,
+        "mae": 22.8424,
+        "rmse": 311.299,
+        "median_ae": 0.4472,
+        "r2": 0.8642
+      }
+    },
+    "excluding_coconut": {
+      "random_forest": {
+        "n": 3224,
+        "mae": 1.463,
+        "rmse": 8.8483,
+        "median_ae": 0.289,
+        "r2": 0.6228
+      },
+      "crop_mean_baseline": {
+        "n": 3224,
+        "mae": 2.4764,
+        "rmse": 10.3561,
+        "median_ae": 0.443,
+        "r2": 0.4834
+      }
+    },
+    "bajra_only": {
+      "random_forest": {
+        "n": 85,
+        "mae": 0.6675,
+        "rmse": 1.3529,
+        "median_ae": 0.4238,
+        "r2": 0.8055
+      },
+      "crop_mean_baseline": {
+        "n": 85,
+        "mae": 1.6536,
+        "rmse": 3.1052,
+        "median_ae": 1.3779,
+        "r2": -0.0246
+      }
+    }
+  },
+  "coconut_share_of_total_abs_error": 0.8763,
+  "onnx_vs_sklearn_on_test": {
+    "max_abs_diff": 0.0013303540581546258,
+    "max_rel_diff": 2.093699042398351e-07
+  },
+  "feature_importance": {
+    "Crop_Year": 0.0067,
+    "Area": 0.0234,
+    "Annual_Rainfall": 0.007,
+    "Crop_code": 0.8498,
+    "Season_code": 0.0,
+    "State_code": 0.1132
+  }
+}

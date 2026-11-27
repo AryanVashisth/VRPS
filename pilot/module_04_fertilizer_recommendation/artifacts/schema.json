@@ -1,0 +1,176 @@
+{
+  "module": "module_04_fertilizer_recommendation",
+  "version": "1.0.0",
+  "task": "multiclass_classification",
+  "framework": "onnxruntime",
+  "android": {
+    "runtime": "onnxruntime-android",
+    "note": "Runs on-device. No network required for inference.",
+    "model_file": "model.onnx"
+  },
+  "inputs": [
+    {
+      "name": "Temperature",
+      "onnx_input": "Temperature",
+      "dtype": "float32",
+      "shape": [
+        1,
+        1
+      ],
+      "unit": null
+    },
+    {
+      "name": "Humidity",
+      "onnx_input": "Humidity",
+      "dtype": "float32",
+      "shape": [
+        1,
+        1
+      ],
+      "unit": null
+    },
+    {
+      "name": "Moisture",
+      "onnx_input": "Moisture",
+      "dtype": "float32",
+      "shape": [
+        1,
+        1
+      ],
+      "unit": null
+    },
+    {
+      "name": "Nitrogen",
+      "onnx_input": "Nitrogen",
+      "dtype": "float32",
+      "shape": [
+        1,
+        1
+      ],
+      "unit": null
+    },
+    {
+      "name": "Potassium",
+      "onnx_input": "Potassium",
+      "dtype": "float32",
+      "shape": [
+        1,
+        1
+      ],
+      "unit": null
+    },
+    {
+      "name": "Phosphorous",
+      "onnx_input": "Phosphorous",
+      "dtype": "float32",
+      "shape": [
+        1,
+        1
+      ],
+      "unit": null
+    },
+    {
+      "name": "Soil Type",
+      "onnx_input": "Soil_Type",
+      "dtype": "string",
+      "shape": [
+        1,
+        1
+      ],
+      "allowed": [
+        "Black",
+        "Clayey",
+        "Loamy",
+        "Red",
+        "Sandy"
+      ]
+    },
+    {
+      "name": "Crop Type",
+      "onnx_input": "Crop_Type",
+      "dtype": "string",
+      "shape": [
+        1,
+        1
+      ],
+      "allowed": [
+        "Barley",
+        "Cotton",
+        "Ground Nuts",
+        "Maize",
+        "Millets",
+        "Oil seeds",
+        "Paddy",
+        "Pulses",
+        "Sugarcane",
+        "Tobacco",
+        "Wheat"
+      ]
+    }
+  ],
+  "outputs": [
+    "label (int64[1])",
+    "probabilities (float32[1,7], index = label id)"
+  ],
+  "preprocessing": {
+    "bundled_in_onnx": true,
+    "numeric": "median imputer",
+    "categorical": "OneHotEncoder(handle_unknown=ignore)"
+  },
+  "labels": [
+    {
+      "id": 0,
+      "name": "10-26-26"
+    },
+    {
+      "id": 1,
+      "name": "14-35-14"
+    },
+    {
+      "id": 2,
+      "name": "17-17-17"
+    },
+    {
+      "id": 3,
+      "name": "20-20"
+    },
+    {
+      "id": 4,
+      "name": "28-28"
+    },
+    {
+      "id": 5,
+      "name": "DAP"
+    },
+    {
+      "id": 6,
+      "name": "Urea"
+    }
+  ],
+  "train": {
+    "seed": 42,
+    "algorithm": "RandomForestClassifier(n_estimators=200, min_samples_leaf=2, class_weight=balanced)",
+    "n_rows": 99,
+    "class_counts": {
+      "10-26-26": 7,
+      "14-35-14": 14,
+      "17-17-17": 7,
+      "20-20": 14,
+      "28-28": 17,
+      "DAP": 18,
+      "Urea": 22
+    },
+    "cleaning": [
+      "exact duplicates dropped",
+      "label 10/26/2026 -> 10-26-26",
+      "Temparature -> Temperature"
+    ]
+  },
+  "metrics": {
+    "cv5_macro_f1_mean": 0.9537,
+    "cv5_macro_f1_std": 0.0642,
+    "holdout_macro_f1": 1.0,
+    "onnx_sklearn_agreement": 1.0
+  },
+  "created_utc": "2026-11-27T03:08:35Z"
+}

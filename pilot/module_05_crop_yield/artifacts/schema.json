@@ -1,0 +1,162 @@
+{
+  "module": "module_05_crop_yield",
+  "version": "1.0.0",
+  "task": "regression",
+  "target": {
+    "name": "Yield",
+    "note": "Recorded yield (Production / Area) in the source table's units"
+  },
+  "framework": "onnxruntime",
+  "android": {
+    "runtime": "onnxruntime-android",
+    "note": "Runs on-device. No network required for inference.",
+    "model_file": "model.onnx",
+    "input_tensor": "float32[1,6]"
+  },
+  "feature_order": [
+    "Crop_Year",
+    "Area",
+    "Annual_Rainfall",
+    "Crop_code",
+    "Season_code",
+    "State_code"
+  ],
+  "numeric_features": [
+    "Crop_Year",
+    "Area",
+    "Annual_Rainfall"
+  ],
+  "categorical_features": [
+    "Crop",
+    "Season",
+    "State"
+  ],
+  "categorical_encoding": {
+    "type": "integer_codes_outside_onnx",
+    "fit_on": "Crop_Year <= 2016",
+    "unknown_code": -1,
+    "strip_whitespace": true,
+    "maps": {
+      "Crop": {
+        "Arecanut": 0,
+        "Arhar/Tur": 1,
+        "Bajra": 2,
+        "Banana": 3,
+        "Barley": 4,
+        "Black pepper": 5,
+        "Cardamom": 6,
+        "Cashewnut": 7,
+        "Castor seed": 8,
+        "Coconut": 9,
+        "Coriander": 10,
+        "Cotton(lint)": 11,
+        "Cowpea(Lobia)": 12,
+        "Dry chillies": 13,
+        "Garlic": 14,
+        "Ginger": 15,
+        "Gram": 16,
+        "Groundnut": 17,
+        "Guar seed": 18,
+        "Horse-gram": 19,
+        "Jowar": 20,
+        "Jute": 21,
+        "Khesari": 22,
+        "Linseed": 23,
+        "Maize": 24,
+        "Masoor": 25,
+        "Mesta": 26,
+        "Moong(Green Gram)": 27,
+        "Moth": 28,
+        "Niger seed": 29,
+        "Oilseeds total": 30,
+        "Onion": 31,
+        "Other  Rabi pulses": 32,
+        "Other Cereals": 33,
+        "Other Kharif pulses": 34,
+        "Other Summer Pulses": 35,
+        "Peas & beans (Pulses)": 36,
+        "Potato": 37,
+        "Ragi": 38,
+        "Rapeseed &Mustard": 39,
+        "Rice": 40,
+        "Safflower": 41,
+        "Sannhamp": 42,
+        "Sesamum": 43,
+        "Small millets": 44,
+        "Soyabean": 45,
+        "Sugarcane": 46,
+        "Sunflower": 47,
+        "Sweet potato": 48,
+        "Tapioca": 49,
+        "Tobacco": 50,
+        "Turmeric": 51,
+        "Urad": 52,
+        "Wheat": 53,
+        "other oilseeds": 54
+      },
+      "Season": {
+        "Autumn": 0,
+        "Kharif": 1,
+        "Rabi": 2,
+        "Summer": 3,
+        "Whole Year": 4,
+        "Winter": 5
+      },
+      "State": {
+        "Andhra Pradesh": 0,
+        "Arunachal Pradesh": 1,
+        "Assam": 2,
+        "Bihar": 3,
+        "Chhattisgarh": 4,
+        "Delhi": 5,
+        "Goa": 6,
+        "Gujarat": 7,
+        "Haryana": 8,
+        "Himachal Pradesh": 9,
+        "Jammu and Kashmir": 10,
+        "Jharkhand": 11,
+        "Karnataka": 12,
+        "Kerala": 13,
+        "Madhya Pradesh": 14,
+        "Maharashtra": 15,
+        "Manipur": 16,
+        "Meghalaya": 17,
+        "Mizoram": 18,
+        "Nagaland": 19,
+        "Odisha": 20,
+        "Puducherry": 21,
+        "Punjab": 22,
+        "Sikkim": 23,
+        "Tamil Nadu": 24,
+        "Telangana": 25,
+        "Tripura": 26,
+        "Uttar Pradesh": 27,
+        "Uttarakhand": 28,
+        "West Bengal": 29
+      }
+    }
+  },
+  "preprocessing": {
+    "bundled_in_onnx": false,
+    "note": "Apply category maps from this file before calling ONNX; no scaling needed."
+  },
+  "excluded_features": [
+    "Production (leaks Yield)",
+    "Fertilizer",
+    "Pesticide"
+  ],
+  "train": {
+    "seed": 42,
+    "algorithm": "RandomForestRegressor(n_estimators=100, max_depth=16, min_samples_leaf=5)",
+    "split": "train Crop_Year <= 2016, test later",
+    "n_train": 16440,
+    "n_test": 3249,
+    "trained_on": "train split only (shipped model has not seen test years)"
+  },
+  "metrics": {
+    "mae_all": 11.7404,
+    "mae_excluding_coconut": 1.463,
+    "mae_bajra": 0.6675
+  },
+  "created_utc": "2026-11-27T03:09:17Z"
+}
